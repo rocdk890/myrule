@@ -149,7 +149,7 @@ dns:
 # 策略组（按服务分组）
 proxy-groups:
   - {name: 一键代理, type: select, proxies: [香港故转, 台湾故转, 日本故转, 韩国故转, 新加坡故转, 美国故转, 欧洲故转, 香港自动, 台湾自动, 日本自动, 韩国自动, 新加坡自动, 美国自动, 欧洲自动, 香港手动, 台湾手动, 日本手动, 韩国手动, 新加坡手动, 美国手动, 欧洲手动, 其他手动, DIRECT, REJECT], icon: https://github.com/rocdk890/myrule/raw/main/icons/Rocket.png}
-  - {name: 广告拦截, type: select, proxies: [REJECT, DIRECT], icon: https://github.com/rocdk890/myrule/blob/main/icons/AdBlock.png}
+  - {name: 广告拦截, type: select, proxies: [REJECT, DIRECT], icon: https://github.com/rocdk890/myrule/raw/main/icons/AdBlock.png}
   - {name: YouTube,   <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/YouTube.png}
   - {name: Google,    <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Google.png}
   - {name: Binance,   <<: *Anchor_HS, filter: *Anchor_SG_JP_TW, icon: https://github.com/rocdk890/myrule/raw/main/icons/Binance.png}
