@@ -214,7 +214,7 @@ proxy-groups:
 # ※※※※※※※※※※※※※※※ 规则匹配 ※※※※※※※※※※※※※※※
 rules:
    # 服务分流
-  - RULE-SET,category-ads-all,广告拦截 
+  - RULE-SET,category_ads,广告拦截 
   - RULE-SET,private_ip,DIRECT,no-resolve
   - RULE-SET,private_domain,DIRECT
   - RULE-SET,speedtest_domain,Speedtest
@@ -445,7 +445,7 @@ rules:
 # 规则来源
 rule-providers: 
   # 域名规则
-  category-ads-all:  { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs"}
+  category_ads:      { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads.mrs"}
   private_domain:    { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   speedtest_domain:  { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs"}
   ai:                { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"}
