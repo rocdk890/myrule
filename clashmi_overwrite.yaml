@@ -155,6 +155,7 @@ proxy-groups:
   - {name: Binance,   <<: *Anchor_HS, filter: *Anchor_SG_JP_TW, icon: https://github.com/rocdk890/myrule/raw/main/icons/Binance.png}
   - {name: ChatGPT,   <<: *Anchor_HS, filter: *Anchor_SG_JP_KR, icon: https://github.com/rocdk890/myrule/raw/main/icons/ChatGPT.png}
   - {name: GitHub,    <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/GitHub.png}
+  - {name: WhatsApp,  <<: *Anchor_HS, filter: *Anchor_SG_JP_KR, icon: https://github.com/rocdk890/myrule/raw/main/icons/WhatsApp.png}
   - {name: OneDrive,  <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/OneDrive.png}
   - {name: Microsoft, <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Microsoft.png}
   - {name: AppleTV,   <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/AppleTV.png}
@@ -218,6 +219,7 @@ rules:
   - RULE-SET,private_domain,DIRECT
   - RULE-SET,speedtest_domain,Speedtest
   - RULE-SET,ai,ChatGPT
+  - RULE-SET,whatsapp_domain,WhatsApp
   - RULE-SET,github_domain,GitHub
   - RULE-SET,binance_domain,Binance
   - RULE-SET,youtube_domain,YouTube
@@ -443,12 +445,13 @@ rules:
 # 规则来源
 rule-providers: 
   # 域名规则
-  category-ads-all:  {<<: *Anchor_DN, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ads-all.mrs"}
+  category-ads-all:  { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs"}
   private_domain:    { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   speedtest_domain:  { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs"}
-  ai:                { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
+  ai:                { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"}
+  whatsapp_domain:   { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/whatsapp.mrs"}
   github_domain:     { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
-  binance_domain:    { <<: *Anchor_DN, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/binance.mrs"}
+  binance_domain:    { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs"}
   youtube_domain:    { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain:     { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   onedrive_domain:   { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
