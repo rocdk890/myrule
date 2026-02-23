@@ -133,6 +133,9 @@ dns:
     - "rule-set:cn_domain"
   # fake-ip-filter end
   default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - tls://223.5.5.5:853
     - https://223.5.5.5/dns-query
     - https://doh.pub/dns-query
   nameserver:
