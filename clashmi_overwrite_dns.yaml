@@ -26,7 +26,6 @@ Anchor_DN: &Anchor_DN {type: http, interval: 86400, behavior: domain, format: mr
 Anchor_CL: &Anchor_CL {type: http, interval: 86400, behavior: classical, format: text}
 
 
-
 # ※※※※※※※※※※※※※※※ 核心配置 ※※※※※※※※※※※※※※※
 # 基础配置
 mixed-port: 7893                                                        # 监听端口  HTTP + SOCKS5 混合代理端口
@@ -38,7 +37,6 @@ unified-delay: true                                                     # 统一
 log-level: info                                                         # 日志级别  silent（静默）/ error（错误）/ warning（警告）/ info（信息）/ debug（调试）
 ipv6: false                                                             # 网络协议  是否启用 IPv6 支持
 find-process-mode: strict
-global-client-fingerprint: chrome
 profile:
   store-selected: true                                                  # 保存选择  记住上次选择的节点和策略组
   store-fake-ip: true                                                   # 保存映射  Fake-IP 映射以加快 DNS 命中
@@ -52,7 +50,7 @@ external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download
 
 # TUN配置
 tun:
-  enable: true                                                          # 网卡模式  是否启用 TUN 虚拟网卡模式  
+  enable: true                                                          # 网卡模式  是否启用 TUN 虚拟网卡模式
   stack: system                                                         # 协议类型  网络栈：system（系统栈）/ gvisor（内置用户态栈）/ mixed（混合）
   dns-hijack:
     - "any:53"
@@ -89,6 +87,15 @@ sniffer:
     - "+.oray.com"                                                      # 跳过嗅探  花生壳服务
     - "+.sunlogin.net"                                                  # 跳过嗅探  向日葵远程控制
     - "+.push.apple.com"                                                # 跳过嗅探  苹果推送服务
+    - "+.telegram.org"                                                  # 跳过嗅探  Telegram 域名
+    - "+.t.me"                                                          # 跳过嗅探  Telegram 短链
+  skip-dst-address:                                                     # 跳过嗅探  按目标 IP 跳过（消除 Telegram IP 嗅探报错）
+    - 149.154.160.0/20
+    - 91.108.4.0/22
+    - 91.108.8.0/22
+    - 91.108.12.0/22
+    - 91.108.16.0/22
+    - 91.108.56.0/22
 
 # DNS 设置
 dns:
@@ -167,7 +174,7 @@ proxy-groups:
   - {name: Telegram,  <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Telegram.png}
   - {name: Netflix,   <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Netflix.png}
   - {name: Disney,    <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Disney.png}
-  - {name: Spotify,   <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Spotify.png} 
+  - {name: Spotify,   <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Spotify.png}
   - {name: PayPal,    <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/PayPal.png}
   - {name: Speedtest, <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/Speedtest.png}
   - {name: 漏网之鱼,   <<: *Anchor_OB, icon: https://github.com/rocdk890/myrule/raw/main/icons/MATCH.png}
@@ -210,8 +217,6 @@ proxy-groups:
 
   # 其他组
   - {name: 其他手动,   <<: *Anchor_HS, filter: *Anchor_OT, icon: https://github.com/rocdk890/myrule/raw/main/icons/OT.png}
-
-
 
 # ※※※※※※※※※※※※※※※ 规则匹配 ※※※※※※※※※※※※※※※
 rules:
@@ -445,7 +450,7 @@ rules:
   - MATCH,漏网之鱼
 
 # 规则来源
-rule-providers: 
+rule-providers:
   # 域名规则
   private_domain:    { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   speedtest_domain:  { <<: *Anchor_DN, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs"}
