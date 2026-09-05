@@ -48,7 +48,7 @@ unified-delay: true                                                     # 统一
 log-level: info                                                         # 日志级别  silent / error / warning / info / debug
 ipv6: false                                                             # 网络协议  是否启用 IPv6 支持
 find-process-mode: strict
-global-client-fingerprint: chrome
+# 【已删除】新版 mihomo 移除了 global-client-fingerprint，需在代理节点上单独设置 client-fingerprint
 profile:
   store-selected: true                                                  # 保存选择  记住上次选择的节点和策略组
   store-fake-ip: true                                                   # 保存映射  Fake-IP 映射以加快 DNS 命中
@@ -140,13 +140,11 @@ dns:
     - stun.syncthing.net
     - stun.*
     - 127.*.*.*.sslip.io
-    - 127-*-*-*.sslip.io
+    # 【已删除】新版 mihomo 校验拒绝混合通配符标签（* 必须独占一段），上述 127.*.*.* 与 *.127.*.*.* 条目已覆盖此场景
     - "*.127.*.*.*.sslip.io"
-    - "*-127-*-*-*.sslip.io"
     - 127.*.*.*.nip.io
-    - 127-*-*-*.nip.io
+    # 【已删除】新版 mihomo 校验拒绝混合通配符标签（* 必须独占一段），上述 127.*.*.* 与 *.127.*.*.* 条目已覆盖此场景
     - "*.127.*.*.*.nip.io"
-    - "*-127-*-*-*.nip.io"
     - "rule-set:cn_domain"
   # fake-ip-filter end
   use-hosts: false
