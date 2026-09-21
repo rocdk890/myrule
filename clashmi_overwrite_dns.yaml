@@ -6,6 +6,8 @@
 #   3. 删除未使用的 Anchor_CL 锚点
 #   4. 修复 Anchor_SJT / Anchor_SJK 死 key：改名为主键+锚点同体
 #   5. 删除 apple.com/cloudkit/mapkit 三条 dead rule（被 apple_domain 前置覆盖）
+#   6. 新增 WorkBuddy/腾讯系直连规则（*.tencent.com / *.workbuddy.cn / codebuddy.cn -> DIRECT），
+#      置于 geolocation-!cn 之前，保障 WorkBuddy 会话同步 WebSocket 长连接稳定，避免经代理抖动
 # 其余配置（含 Telegram sniffer skip-dst-address、中文域名直连段）保持不动
 # 说明：已隐藏"故障转移"、"延迟自选"两个策略组，使用时手动选取对应地区节点即可。
 # =============================================================
@@ -252,6 +254,10 @@ rules:
   - RULE-SET,disney_domain,Disney
   - RULE-SET,spotify_domain,Spotify
   - RULE-SET,paypal_domain,PayPal
+  # WorkBuddy / 腾讯系 直连（保障会话同步 WebSocket 长连接稳定，置于代理规则前提前命中）
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  - DOMAIN-SUFFIX,workbuddy.cn,DIRECT
+  - DOMAIN-SUFFIX,codebuddy.cn,DIRECT
   - RULE-SET,geolocation-!cn,一键代理
   - RULE-SET,google_ip,Google,no-resolve
   - RULE-SET,apple_ip,Apple,no-resolve
